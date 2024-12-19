@@ -4,6 +4,8 @@ const result = document.getElementById("display-area");
 let result_text = result.innerHTML;
 const delete_btn = document.getElementById("del");
 const ac_btn = document.getElementById("ac");
+const equal = document.getElementById("equal")
+const space_btn = document.getElementById("space");
 // !todo add on //of button
 const is_on = false;
 function showAlert(msg) {
@@ -29,3 +31,10 @@ delete_btn.addEventListener("click", () => {
   result_text = result_text.slice(0, -1);
   result.innerHTML = result_text;
 });
+equal.addEventListener("click",()=>{
+showAlert("equal clicked")
+})
+space_btn.addEventListener("click",()=>{
+    result_text +=" "
+    result.innerHTML = result_text;
+})
