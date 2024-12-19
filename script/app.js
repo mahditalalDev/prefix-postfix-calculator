@@ -57,14 +57,14 @@ function prefixCalculation(equation) {
 
   try {
     for (let i = equation_array.length - 1; i >= 0; i--) {
-      if (isOperator(equation_array[i])) {
+      let operator = equation_array[i]
+      if (isOperator(operator)) {
         if (stack.length < 2) {
           alert("Invalid equation: Not enough operands.");
           return;
         }
-        let first_element = parseFloat(stack.pop());
-        let second_element = parseFloat(stack.pop());
-        let operator = equation_array[i]
+        let first_element = stack.pop();
+        let second_element = stack.pop();
         equation_result = calculate(first_element,second_element,operator)
         stack.push(equation_result);
       } else {
@@ -101,15 +101,17 @@ function postfixCalculation(equation) {
       else{
         let first_stack_element = stack.pop()
         let second_stack_element = stack.pop()
-        calculate(first_stack_element,second_stack_element,equation_array[i])       
+        equation_result = calculate(first_stack_element,second_stack_element,equation_array[i])     
+        stack.push(equation_result)  
       }
     }
     else{
       stack.push(equation_array[i])
     }
-
-
+    
   }
+  displayResult(equation_result);
+  return equation_result
 
 }
 function calculate(first_element , second_element , operator){
@@ -136,13 +138,11 @@ function calculate(first_element , second_element , operator){
     default:
       throw new Error("Invalid operator");
   }
-  showAlert(equation_result)
   return equation_result;
 }
 
 function infixCalculation(equation) {
   let equation_array = splitEquation(equation);
-  console.log(equation_array)
   let equation_result = 0;
   let equation_length = equation_array.length;
   try {
@@ -189,7 +189,7 @@ function isOperator(operant) {
   return false;
 }
 function splitEquation(equation) {
-  let pattern = /[+\-*/]|\d*\.?\d+/g;
+  let pattern = /[+\-x/]|\d*\.?\d+/g;
   let tokens = equation.match(pattern);
   return tokens;
 }
