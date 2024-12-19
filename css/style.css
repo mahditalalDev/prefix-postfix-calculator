@@ -142,3 +142,27 @@ body {
   color: #5e7597;
   padding-top: 30%;
 }
+.number-buttons{
+    background-color: transparent;
+    height: 40vh;
+    width: 90%;
+    display: grid;
+    gap: -5px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    place-items: center;
+
+}
+.button3{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.854);
+    border-radius: 5px 5px 45% 45%;
+    height: 5.2vh;
+    width: 7.72vh;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
