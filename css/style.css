@@ -95,3 +95,50 @@ body {
   width: 100%;
   padding: 10px 8px;
 }
+.advanced-butons {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 5px;
+  place-items: center;
+}
+.button1 {
+  background: linear-gradient(#464545, #323232);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.854);
+  border-radius: 5px 5px 40% 40%;
+  height: 3.36vh;
+  width: 5.37vh;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+}
+.button2 {
+  background: linear-gradient(#aabcdb, #798fb0);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.854);
+  border-radius: 5px 5px 40% 40%;
+  height: 3.36vh;
+  width: 5.37vh;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.4rem;
+}
+#replay {
+  grid-column: 3/5;
+  grid-row: 1/3;
+  background-color: #a3b9d8;
+  box-shadow: 0px -1px 25px #798fb0 inset;
+  outline: 2px solid #798fb0;
+  border: 1px solid #a3b9d8;
+  width: 90%;
+  height: 80%;
+  border-radius: 100%;
+  color: #5e7597;
+  padding-top: 30%;
+}
