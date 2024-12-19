@@ -66,9 +66,9 @@ function postfixCalculation(equation) {
 }
 // todo
 function infixCalculation(equation) {
-  let equation_array = convertToArray(equation); 
-  console.log("the array is",equation_array)
-  let equation_result = 0; 
+  let equation_array = convertToArray(equation);
+  console.log("the array is", equation_array);
+  let equation_result = 0;
   let equation_length = equation_array.length;
 
   try {
@@ -76,7 +76,11 @@ function infixCalculation(equation) {
       let first_element = parseFloat(equation_array[i]);
       let operator = equation_array[i + 1];
       let second_element = parseFloat(equation_array[i + 2]);
-      if (isNaN(first_element) || !isOperator(operator) || isNaN(second_element)) {
+      if (
+        isNaN(first_element) ||
+        !isOperator(operator) ||
+        isNaN(second_element)
+      ) {
         alert("Invalid equation format!");
         throw new Error("Invalid equation");
       }
@@ -100,32 +104,24 @@ function infixCalculation(equation) {
         default:
           throw new Error("Invalid operator");
       }
-
-      
     }
   } catch (error) {
     showAlert("Invalid equation");
     console.error(error.message);
     return "Error: Invalid equation";
   }
-
   result_text = equation_result;
   if (typeof result !== "undefined" && result !== null) {
     result.innerHTML = result_text;
   } else {
-    console.log(result_text); 
+    console.log(result_text);
   }
-
   return equation_result;
 }
 function convertToArray(equation) {
   let equation_array = equation.split(/([+\-x*/])/);
   return equation_array;
 }
-
-
-
-
 function isOperator(operant) {
   if (
     operant == "+" ||
