@@ -4,3 +4,75 @@
   margin: 0;
   box-sizing: border-box;
 }
+/* body styles */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkblue;
+  height: 100vh;
+}
+/* used for knowing the border of each box */
+.border {
+  border: 1px solid black;
+}
+
+.calc {
+  background-color: rgb(216, 216, 216);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px -1px 15px rgba(0, 0, 0, 0.854) inset;
+  border-radius: 4% 4% 12% 12%;
+  height: 95vh;
+  width: 50vh;
+  position: absolute;
+  margin: auto;
+}
+.heading {
+  margin-top: 10px;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.row {
+  display: flex;
+}
+.name-type {
+  flex-grow: 1;
+}
+.solar {
+  gap: 1.5px;
+  border: 3px solid black;
+  border-radius: 10px;
+  width: 60%;
+  background-color: rgb(168, 164, 164);
+}
+.solar-power {
+  display: flex;
+  gap: 2px;
+  align-items: stretch;
+  height: 100%;
+}
+.solar-power > div {
+  flex-grow: 1;
+  /* flex-basis: calc(25% - 1.5px); */
+  flex-grow: 1;
+  background-color: rgb(80, 80, 80);
+  text-align: center;
+  padding: 10px;
+}
+.first {
+  border-radius: 5px 0px 0px 5px;
+}
+.fourth {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.calc-featuers {
+  width: 100%;
+  gap: 100px;
+  justify-content: space-between;
+}
