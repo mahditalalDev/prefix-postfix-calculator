@@ -43,7 +43,6 @@ equal.addEventListener("click", () => {
 });
 
 space_btn.addEventListener("click", () => {
-  result_text += " ";
   result.innerHTML = result_text;
 });
 
@@ -58,25 +57,82 @@ function equationType(equation) {
   } else infixCalculation(equation);
 }
 // todo
-function prefixCalculation() {
-  showAlert("prefix");
+function prefixCalculation(equation) {
+  showAlert(`prefix+${equation}`);
 }
 // todo
-function postfixCalculation() {
-  showAlert("postfix");
+function postfixCalculation(equation) {
+  showAlert(`postfix +${equation}`);
 }
 // todo
-function infixCalculation() {
-  showAlert("infix");
+function infixCalculation(equation) {
+  let equation_array = convertToArray(equation); 
+  console.log("the array is",equation_array)
+  let equation_result = 0; 
+  let equation_length = equation_array.length;
+
+  try {
+    for (let i = 0; i < equation_length - 2; i += 2) {
+      let first_element = parseFloat(equation_array[i]);
+      let operator = equation_array[i + 1];
+      let second_element = parseFloat(equation_array[i + 2]);
+      if (isNaN(first_element) || !isOperator(operator) || isNaN(second_element)) {
+        alert("Invalid equation format!");
+        throw new Error("Invalid equation");
+      }
+      switch (operator) {
+        case "+":
+          equation_result = first_element + second_element;
+          break;
+        case "-":
+          equation_result = first_element - second_element;
+          break;
+        case "/":
+          if (second_element === 0) {
+            alert("You can't divide by 0");
+            return "Division by zero error";
+          }
+          equation_result = first_element / second_element;
+          break;
+        case "x":
+          equation_result = first_element * second_element;
+          break;
+        default:
+          throw new Error("Invalid operator");
+      }
+
+      
+    }
+  } catch (error) {
+    showAlert("Invalid equation");
+    console.error(error.message);
+    return "Error: Invalid equation";
+  }
+
+  result_text = equation_result;
+  if (typeof result !== "undefined" && result !== null) {
+    result.innerHTML = result_text;
+  } else {
+    console.log(result_text); 
+  }
+
+  return equation_result;
 }
+function convertToArray(equation) {
+  let equation_array = equation.split(/([+\-x*/])/);
+  return equation_array;
+}
+
+
+
 
 function isOperator(operant) {
   if (
     operant == "+" ||
     operant == "-" ||
-    operant == "×" ||
+    operant == "x" ||
     operant == "+" ||
-    operant == "÷"
+    operant == "/"
   ) {
     return true;
   }
