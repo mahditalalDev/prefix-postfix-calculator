@@ -47,6 +47,7 @@ space_btn.addEventListener("click", () => {
   result.innerHTML = result_text;
 });
 
+//* Check the type of the equation to determine which calculation algorithm should be used
 function equationType(equation) {
   first_digit = equation[0];
   last_digit = equation[equation.length - 1];
@@ -56,12 +57,15 @@ function equationType(equation) {
     postfixCalculation(equation);
   } else infixCalculation(equation);
 }
+// todo
 function prefixCalculation() {
   showAlert("prefix");
 }
+// todo
 function postfixCalculation() {
   showAlert("postfix");
 }
+// todo
 function infixCalculation() {
   showAlert("infix");
 }
