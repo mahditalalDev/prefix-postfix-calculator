@@ -1,9 +1,9 @@
 const future_work = document.querySelectorAll(".future_work");
 const number_buttons = document.querySelectorAll(".num_btn");
 const result = document.getElementById("display-area");
+let result_text = result.innerHTML;
 const delete_btn = document.getElementById("del");
 const ac_btn = document.getElementById("ac");
-let result_text = "";
 // !todo add on //of button
 const is_on = false;
 function showAlert(msg) {
@@ -26,5 +26,6 @@ ac_btn.addEventListener("click", () => {
   result.innerHTML = "";
 });
 delete_btn.addEventListener("click", () => {
-    // todo its should delete the last index in result and result_text
+  result_text = result_text.slice(0, -1);
+  result.innerHTML = result_text;
 });
