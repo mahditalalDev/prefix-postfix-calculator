@@ -76,3 +76,22 @@ body {
   gap: 100px;
   justify-content: space-between;
 }
+
+/* result area */
+.result {
+  margin-top: 10px;
+  width: 80%;
+  height: 16%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.display {
+  outline: 1px solid rgba(74, 70, 70, 0.639);
+  outline-offset: 5px;
+  box-shadow: 0px -1px 15px rgba(13, 53, 38, 0.945) inset;
+  border-radius: 6px;
+  background-color: rgb(166, 191, 172);
+  width: 100%;
+  padding: 10px 8px;
+}
