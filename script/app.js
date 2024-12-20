@@ -6,6 +6,7 @@ const delete_btn = document.getElementById("del");
 const ac_btn = document.getElementById("ac");
 const equal = document.getElementById("equal");
 const space_btn = document.getElementById("space");
+const function_type = document.getElementById("type-text");
 const is_on = false;
 
 function showAlert(msg) {
@@ -102,10 +103,19 @@ function equationType(equation) {
   first_digit = equation[0];
   last_digit = equation[equation.length - 1];
   if (isOperator(first_digit)) {
+    function_type.innerText="Prefix";
+    function_type.style.visibility="visible"
     prefixCalculation(equation);
   } else if (isOperator(last_digit)) {
+    function_type.innerText="Postfix";
+    function_type.style.visibility="visible"
     postfixCalculation(equation);
-  } else infixCalculation(equation);
+  } else
+   {
+    function_type.innerText="infix";
+    function_type.style.visibility="visible"
+    infixCalculation(equation);
+   }
 }
 function prefixCalculation(equation) {
   let equation_array = splitEquation(equation);

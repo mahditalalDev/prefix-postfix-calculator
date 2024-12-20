@@ -9,6 +9,7 @@
   </head>
   <body>
     <div class="calc">
+      <!-- heading area -->
       <div class="heading">
         <div class="col">
           <div class="row">
@@ -26,16 +27,26 @@
             </div>
           </div>
           <div class="row calc-featuers">
-            <div>Prefix</div>
+           <div class="function_type ">
+        
+            <div style="flex-grow: 1;text-align:center;">
+               <span id="type-text">type</span></div>
+            <div> <span class="calc-text">calculation</span></div>
             <div>
-              <p>Postfix Calculator</p>
             </div>
+           </div>
+            
           </div>
         </div>
       </div>
+      <!-- ### heading area ### -->
+       <!-- display Screen Result -->
       <div class="result">
         <textarea class="display" id="display-area"></textarea>
       </div>
+      <!-- ###display Screen Result### -->
+
+      <!-- Future work buttons -->
       <div class="advanced-butons" style="margin-top: 15px">
         <div id="replay"></div>
         <button class="button2 future_work">SHIFT</button>
@@ -65,6 +76,8 @@
         <button class="button1 future_work">S<>D</button>
         <button class="button1 future_work">M+</button>
       </div>
+      <!-- ###Future work buttons### -->
+      <!-- Numbers Buttons -->
       <div class="number-buttons">
         <button class="button3 num_btn">7</button>
         <button class="button3 num_btn">8</button>
@@ -87,9 +100,11 @@
         <button class="button3" id="space">space</button>
         <button class="button3" id="equal">=</button>
       </div>
+      <!-- ###Numbers Buttons### -->
     </div>
 
     <script src="./script/app.js"></script>
+    <!-- Future script code for api calls-->
     <script type="module">
       import axios from "https://cdn.skypack.dev/axios";
       const token = "";

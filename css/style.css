@@ -13,11 +13,7 @@ body {
   background-color: darkblue;
   height: 100vh;
 }
-/* used for knowing the border of each box */
-.border {
-  border: 1px solid black;
-}
-
+/* calculator style */
 .calc {
   background-color: rgb(216, 216, 216);
   display: flex;
@@ -30,20 +26,17 @@ body {
   position: absolute;
   margin: auto;
 }
+/* Heading Calc */
+/* Calculator Heading */
 .heading {
   margin-top: 10px;
+  width: 80%;
 }
-.col {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.row {
-  display: flex;
-}
+/*Casio Name style*/
 .name-type {
   flex-grow: 1;
 }
+/* Solar Panel style */
 .solar {
   gap: 1.5px;
   border: 3px solid black;
@@ -59,7 +52,6 @@ body {
 }
 .solar-power > div {
   flex-grow: 1;
-  /* flex-basis: calc(25% - 1.5px); */
   flex-grow: 1;
   background-color: rgb(80, 80, 80);
   text-align: center;
@@ -71,19 +63,37 @@ body {
 .fourth {
   border-radius: 0px 5px 5px 0px;
 }
+/* ###Solar Panel style### */
+
 #brand {
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
   letter-spacing: -1px;
 }
-
+.function_type {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calc-text{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  
+}
+#type-text{
+  font-weight: 600;
+  font-family: 'Courier New', Courier, monospace;
+  color: darkblue;
+  visibility:hidden;
+}
 .calc-featuers {
   width: 100%;
   gap: 100px;
-  justify-content: space-between;
+  align-items: center;
 }
-
 /* result area */
 .result {
   margin-top: 10px;
@@ -104,6 +114,9 @@ body {
   resize: none;
   overflow: hidden;
 }
+
+/* ###Heading Calc### */
+/* advanced Buttons Style */
 .advanced-butons {
   width: 90%;
   display: grid;
@@ -112,6 +125,7 @@ body {
   gap: 5px;
   place-items: center;
 }
+/* functions buttons */
 .button1 {
   background: linear-gradient(#464545, #323232);
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.854);
@@ -125,6 +139,7 @@ body {
   justify-content: center;
   font-size: 0.625rem;
 }
+/* control buttons */
 .button2 {
   background: linear-gradient(#aabcdb, #798fb0);
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.854);
@@ -136,8 +151,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.4rem;
+  font-size: 0.6rem;
+  font-weight: 500;
 }
+/* replay button */
 #replay {
   grid-column: 3/5;
   grid-row: 1/3;
@@ -151,6 +168,7 @@ body {
   color: #5e7597;
   padding-top: 30%;
 }
+/* numbers buttons */
 .number-buttons {
   background-color: transparent;
   height: 40vh;
@@ -161,6 +179,7 @@ body {
   grid-template-rows: repeat(4, 1fr);
   place-items: center;
 }
+
 .button3 {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.854);
@@ -173,4 +192,17 @@ body {
   justify-content: center;
   font-size: 1rem;
   font-weight: bold;
+}
+
+/* flexbox  */
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.row {
+  display: flex;
+}
+.hidden {
+  visibility: hidden;
 }
