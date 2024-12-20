@@ -1,98 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prefix & Postfix Calculator</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
     <div class="calc">
-        <div class="heading">
-            <div class="col">
-                <div class="row">
-                    <div class="col name-type">
-                        <p id="brand">Casio</p>
-                        <p>fx-991Es plus</p>
-                    </div>
-                    <div class="solar">
-                        <div class="solar-power">
-                            <div class="first"></div>
-                            <div class="second"></div>
-                            <div class="third"></div>
-                            <div class="fourth" ></div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="row  calc-featuers">
-                    <div>
-                        Prefix
-                    </div>
-                    <div>
-                        <p>Postfix Calculator</p>
-                    </div>
-                </div>
+      <div class="heading">
+        <div class="col">
+          <div class="row">
+            <div class="col name-type">
+              <p id="brand">Casio</p>
+              <p>fx-991Es plus</p>
             </div>
+            <div class="solar">
+              <div class="solar-power">
+                <div class="first"></div>
+                <div class="second"></div>
+                <div class="third"></div>
+                <div class="fourth"></div>
+              </div>
             </div>
-            <div class="result">
-                <textarea class="display" id="display-area"></textarea>
+          </div>
+          <div class="row calc-featuers">
+            <div>Prefix</div>
+            <div>
+              <p>Postfix Calculator</p>
             </div>
-            <div class="advanced-butons" style="margin-top: 15px;">
-                <div id="replay"></div>
-                <button class="button2 future_work">SHIFT</button>
-                <button class="button2 future_work">ALPHA</button>
-                <button class="button2 future_work">MODE</button>
-                <button class="button2 future_work" id="on">ON</button>
-                <button class="button1 future_work">CALC</button>
-                <button class="button1 future_work">∫□▃</button>
-                <button class="button1 future_work">x⁻¹</button>
-                <button class="button1 future_work">log□▮</button>
-                <button class="button1 future_work">%</button>
-                <button class="button1 future_work">√◻</button>
-                <button class="button1 future_work">x²</button>
-                <button class="button1 future_work">x□</button>
-                <button class="button1 future_work">log</button>
-                <button class="button1 future_work">ln</button>
-                <button class="button1 future_work">(—)</button>
-                <button class="button1 future_work">∘‚ ,,</button>
-                <button class="button1 future_work">hyp</button>
-                <button class="button1 future_work">sin</button>
-                <button class="button1 future_work">cos</button>
-                <button class="button1 future_work">tan</button>
-                <button class="button1 future_work">RCL</button>
-                <button class="button1 future_work">ENG</button>
-                <button class="button1 future_work">(</button>
-                <button class="button1 future_work">)</button>
-                <button class="button1 future_work">S<>D</button>
-                <button class="button1 future_work">M+</button>
-            </div>
-            <div class="number-buttons">
-                <button class="button3 num_btn">7</button>
-                <button class="button3 num_btn">8</button>
-                <button class="button3 num_btn">9</button>
-                <button class="button3 " id="del">DEL</button>
-                <button class="button3" id="ac">AC</button>
-                <button class="button3 num_btn">4</button>
-                <button class="button3 num_btn">5</button>
-                <button class="button3 num_btn">6</button>
-                <button class="button3 num_btn">x</button>
-                <button class="button3 num_btn">/</button>
-                <button class="button3 num_btn">1</button>
-                <button class="button3 num_btn">2</button>
-                <button class="button3 num_btn">3</button>
-                <button class="button3 num_btn">+</button>
-                <button class="button3 num_btn">-</button>
-                <button class="button3 num_btn">0</button>
-                <button class="button3 num_btn">.</button>
-                <button class="button3 future_work">×10ⁿ</button>
-                <button class="button3" id="space">space</button>
-                <button class="button3" id="equal">=</button>
-    
-            </div>
+          </div>
         </div>
-        
+      </div>
+      <div class="result">
+        <textarea class="display" id="display-area"></textarea>
+      </div>
+      <div class="advanced-butons" style="margin-top: 15px">
+        <div id="replay"></div>
+        <button class="button2 future_work">SHIFT</button>
+        <button class="button2 future_work">ALPHA</button>
+        <button class="button2 future_work">MODE</button>
+        <button class="button2 future_work" id="on">ON</button>
+        <button class="button1 future_work">CALC</button>
+        <button class="button1 future_work">∫□▃</button>
+        <button class="button1 future_work">x⁻¹</button>
+        <button class="button1 future_work">log□▮</button>
+        <button class="button1 future_work">%</button>
+        <button class="button1 future_work">√◻</button>
+        <button class="button1 future_work">x²</button>
+        <button class="button1 future_work">x□</button>
+        <button class="button1 future_work">log</button>
+        <button class="button1 future_work">ln</button>
+        <button class="button1 future_work">(—)</button>
+        <button class="button1 future_work">∘‚ ,,</button>
+        <button class="button1 future_work">hyp</button>
+        <button class="button1 future_work">sin</button>
+        <button class="button1 future_work">cos</button>
+        <button class="button1 future_work">tan</button>
+        <button class="button1 future_work">RCL</button>
+        <button class="button1 future_work">ENG</button>
+        <button class="button1 future_work">(</button>
+        <button class="button1 future_work">)</button>
+        <button class="button1 future_work">S<>D</button>
+        <button class="button1 future_work">M+</button>
+      </div>
+      <div class="number-buttons">
+        <button class="button3 num_btn">7</button>
+        <button class="button3 num_btn">8</button>
+        <button class="button3 num_btn">9</button>
+        <button class="button3" id="del">DEL</button>
+        <button class="button3" id="ac">AC</button>
+        <button class="button3 num_btn">4</button>
+        <button class="button3 num_btn">5</button>
+        <button class="button3 num_btn">6</button>
+        <button class="button3 num_btn">x</button>
+        <button class="button3 num_btn">/</button>
+        <button class="button3 num_btn">1</button>
+        <button class="button3 num_btn">2</button>
+        <button class="button3 num_btn">3</button>
+        <button class="button3 num_btn">+</button>
+        <button class="button3 num_btn">-</button>
+        <button class="button3 num_btn">0</button>
+        <button class="button3 num_btn">.</button>
+        <button class="button3 future_work">×10ⁿ</button>
+        <button class="button3" id="space">space</button>
+        <button class="button3" id="equal">=</button>
+      </div>
     </div>
+
     <script src="./script/app.js"></script>
-</body>
+    <script type="module">
+      import axios from "https://cdn.skypack.dev/axios";
+      const token = "";
+      const callChatGPT = async () => {
+        try {
+          console.log("Sending request to OpenAI API...");
+
+          const response = await axios.post(
+            "https://api.openai.com/v1/chat/completions",
+            {
+              model: "gpt-4",
+              messages: [{ role: "user", content: "Hello" }],
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          console.log(
+            "Response from ChatGPT:",
+            response.data.choices[0].message.content.trim()
+          );
+        } catch (error) {
+          if (error.response) {
+            // Errors returned by the API
+            console.error(
+              "API error:",
+              error.response.status,
+              error.response.data
+            );
+          } else {
+            // Other errors like network issues
+            console.error("Error calling OpenAI API:", error.message);
+          }
+        }
+      };
+
+      callChatGPT();
+    </script>
+  </body>
 </html>
