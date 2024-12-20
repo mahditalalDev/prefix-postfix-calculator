@@ -32,7 +32,7 @@ To get this project running locally, follow these steps:
 
 1. Clone the repository:
    ```
-   git clone 
+   git clone https://github.com/mahditalalDev/prefix-postfix-calculator.git 
    ```
 2. Open the `index.html` file in your web browser.
 
