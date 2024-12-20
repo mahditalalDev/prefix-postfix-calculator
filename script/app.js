@@ -8,6 +8,7 @@ const equal = document.getElementById("equal");
 const space_btn = document.getElementById("space");
 const function_type = document.getElementById("type-text");
 const is_on = false;
+let consoleLogs = [];
 
 function showAlert(msg) {
   alert(msg);
@@ -118,42 +119,46 @@ function equationType(equation) {
    }
 }
 function prefixCalculation(equation) {
-  console.log("Step 1: The initial equation as a string is:", equation);
+  consoleLogs = []
+  console.clear();
+  consoleLogs.push("Prefix Calculation ")
+  consoleLogs.push("Step 1: The initial equation as a string is:", equation);
   let equation_array = splitEquation(equation);
-  console.log("Step 2: Convert the equation string into an array to make it easier to work with:", equation_array);
+  consoleLogs.push("Step 2: Convert the equation string into an array to make it easier to work with:", equation_array);
   let stack = [];
-  console.log("Step 3: Initialize an empty stack to store operands during the loop:", stack);
+  consoleLogs.push("Step 3: Initialize an empty stack to store operands during the loop:", stack);
   let equation_result = 0; 
   try {
     for (let i = equation_array.length - 1; i >= 0; i--) {
       let operator = equation_array[i];
-      console.log(`Step 4.${equation_array.length - i}: Current element in iteration is:`, operator);
+      consoleLogs.push(`Step 4.${equation_array.length - i}: Current element in iteration is:`, operator);
       if (isOperator(operator)) {
-        console.log("Step 5: Detected an operator:", operator);
+        consoleLogs.push("Step 5: Detected an operator:", operator);
 
         if (stack.length < 2) {
-          console.log("Step 5.1: Invalid equation. Not enough operands for the operator.");
+          consoleLogs.push("Step 5.1: Invalid equation. Not enough operands for the operator.");
           alert("Invalid equation: Not enough operands.");
           return;
         }
         let first_element = stack.pop();
         let second_element = stack.pop();
-        console.log("Step 5.2: Operands popped from the stack:", first_element, second_element);
+        consoleLogs.push("Step 5.2: Operands popped from the stack:", first_element, second_element);
 
         equation_result = calculate(first_element, second_element, operator);
-        console.log("Step 5.3: Result of calculation using operator:", equation_result);
+        consoleLogs.push("Step 5.3: Result of calculation using operator:", equation_result);
         stack.push(equation_result);
-        console.log("Step 5.4: Push the result back to the stack:", stack);
+        consoleLogs.push("Step 5.4: Push the result back to the stack:", stack);
 
       } else {
         stack.push(equation_array[i]);
-        console.log("Step 6: Current element is an operand, push it to the stack:", stack);
+        consoleLogs.push("Step 6: Current element is an operand, push it to the stack:", stack);
       }
     }
 
-    console.log("Step 7: Calculation complete. The final result is:", equation_result);
+    consoleLogs.push("Step 7: Calculation complete. The final result is:", equation_result);
 
     // Display the result
+    console.log(consoleLogs.join("\n"));
     displayResult(equation_result);
     return equation_result;
 
@@ -167,31 +172,59 @@ function prefixCalculation(equation) {
 
 
 function postfixCalculation(equation) {
+  consoleLogs = []
+  console.clear();
+  consoleLogs.push("PostFix calc");
+  consoleLogs.push(`Step 1: The initial equation as a string is: ${equation}`);
+  consoleLogs("Step 1: The initial equation as a string is:", equation);
   let equation_array = splitEquation(equation);
+  consoleLogs.push("Step 2: Convert the equation string into an array to make it easier to work with:", equation_array);
+
   let stack = [];
+  console.log("Step 3: Initialize an empty stack to store operands during the loop:", stack);
+
   let equation_result = 0;
-  let equation_length = equation_array.length;
-  for (let i = 0; i < equation_length; i++) {
-    if (isOperator(equation_array[i])) {
-      if (stack.length < 2) {
-        throw new Error("not much operant");
-      } else {
-        let first_stack_element = stack.pop();
-        let second_stack_element = stack.pop();
-        equation_result = calculate(
-          first_stack_element,
-          second_stack_element,
-          equation_array[i]
-        );
+
+  try {
+    for (let i = 0; i < equation_array.length; i++) {
+      let element = equation_array[i];
+      console.log(`Step 4.${i + 1}: Current element in iteration is:`, element);
+
+      if (isOperator(element)) {
+        console.log("Step 5: Detected an operator:", element);
+
+        if (stack.length < 2) {
+          consoleLogs("Step 5.1: Invalid equation. Not enough operands for the operator.");
+          alert("Invalid equation: Not enough operands.");
+          return;
+        }
+
+        let second_element = stack.pop();
+        let first_element = stack.pop();
+        consoleLogs.push("Step 5.2: Operands popped from the stack:", first_element, second_element);
+        equation_result = calculate(first_element, second_element, element);
+        consoleLogs.push("Step 5.3: Result of calculation using operator:", equation_result);
         stack.push(equation_result);
+        consoleLogs.push("Step 5.4: Push the result back to the stack:", stack);
+
+      } else {
+        stack.push(element);
+        consoleLogs.push("Step 6: Current element is an operand, push it to the stack:", stack);
       }
-    } else {
-      stack.push(equation_array[i]);
     }
+
+    consoleLogs.push("Step 7: Calculation complete. The final result is:", equation_result);
+    displayResult(equation_result);
+    console.log(consoleLogs.join("\n"));
+    return equation_result;
+
+  } catch (error) {
+    console.log("Step 8: An error occurred:", error.message);
+    alert("Error: " + error.message);
+    return;
   }
-  displayResult(equation_result);
-  return equation_result;
 }
+
 function infixCalculation(equation) {
   let equation_array = splitEquation(equation);
   let equation_result = 0;
