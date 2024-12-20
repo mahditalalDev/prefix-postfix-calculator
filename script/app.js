@@ -176,25 +176,25 @@ function postfixCalculation(equation) {
   console.clear();
   consoleLogs.push("PostFix calc");
   consoleLogs.push(`Step 1: The initial equation as a string is: ${equation}`);
-  consoleLogs("Step 1: The initial equation as a string is:", equation);
+  consoleLogs.push("Step 1: The initial equation as a string is:", equation);
   let equation_array = splitEquation(equation);
   consoleLogs.push("Step 2: Convert the equation string into an array to make it easier to work with:", equation_array);
 
   let stack = [];
-  console.log("Step 3: Initialize an empty stack to store operands during the loop:", stack);
+  consoleLogs.push("Step 3: Initialize an empty stack to store operands during the loop:", stack);
 
   let equation_result = 0;
 
   try {
     for (let i = 0; i < equation_array.length; i++) {
       let element = equation_array[i];
-      console.log(`Step 4.${i + 1}: Current element in iteration is:`, element);
+      consoleLogs.push(`Step 4.${i + 1}: Current element in iteration is:`, element);
 
       if (isOperator(element)) {
-        console.log("Step 5: Detected an operator:", element);
+        consoleLogs.push("Step 5: Detected an operator:", element);
 
         if (stack.length < 2) {
-          consoleLogs("Step 5.1: Invalid equation. Not enough operands for the operator.");
+          consoleLogs.push("Step 5.1: Invalid equation. Not enough operands for the operator.");
           alert("Invalid equation: Not enough operands.");
           return;
         }
