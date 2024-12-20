@@ -118,34 +118,53 @@ function equationType(equation) {
    }
 }
 function prefixCalculation(equation) {
+  console.log("Step 1: The initial equation as a string is:", equation);
   let equation_array = splitEquation(equation);
-  console.log(equation_array);
+  console.log("Step 2: Convert the equation string into an array to make it easier to work with:", equation_array);
   let stack = [];
-  let equation_result = 0;
-
+  console.log("Step 3: Initialize an empty stack to store operands during the loop:", stack);
+  let equation_result = 0; 
   try {
     for (let i = equation_array.length - 1; i >= 0; i--) {
       let operator = equation_array[i];
+      console.log(`Step 4.${equation_array.length - i}: Current element in iteration is:`, operator);
       if (isOperator(operator)) {
+        console.log("Step 5: Detected an operator:", operator);
+
         if (stack.length < 2) {
+          console.log("Step 5.1: Invalid equation. Not enough operands for the operator.");
           alert("Invalid equation: Not enough operands.");
           return;
         }
         let first_element = stack.pop();
         let second_element = stack.pop();
+        console.log("Step 5.2: Operands popped from the stack:", first_element, second_element);
+
         equation_result = calculate(first_element, second_element, operator);
+        console.log("Step 5.3: Result of calculation using operator:", equation_result);
         stack.push(equation_result);
+        console.log("Step 5.4: Push the result back to the stack:", stack);
+
       } else {
         stack.push(equation_array[i]);
+        console.log("Step 6: Current element is an operand, push it to the stack:", stack);
       }
     }
+
+    console.log("Step 7: Calculation complete. The final result is:", equation_result);
+
+    // Display the result
     displayResult(equation_result);
     return equation_result;
+
   } catch (error) {
+    // Catch any errors during execution
+    console.log("Step 8: An error occurred:", error.message);
     alert("Error: " + error.message);
     return;
   }
 }
+
 
 function postfixCalculation(equation) {
   let equation_array = splitEquation(equation);
