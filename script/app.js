@@ -226,29 +226,50 @@ function postfixCalculation(equation) {
 }
 
 function infixCalculation(equation) {
+  consoleLogs = []; 
+  console.clear()
+  consoleLogs.push("Infix Calculation Steps : ")
+  consoleLogs.push(`Step 1: The initial equation as a string is: ${equation}`);
+
   let equation_array = splitEquation(equation);
+  consoleLogs.push(`Step 2: Convert the equation string into an array: ${equation_array}`);
+
   let equation_result = 0;
   let equation_length = equation_array.length;
+  consoleLogs.push(`Step 3: The length of the equation array is: ${equation_length}`);
+
   try {
     for (let i = 0; i < equation_length - 2; i += 2) {
       let first_element = equation_array[i];
       let operator = equation_array[i + 1];
       let second_element = equation_array[i + 2];
+      consoleLogs.push(`Step 4.${i / 2 + 1}: Processing elements : ${first_element} ${operator} ${second_element}`);
+
       if (
         isNaN(first_element) ||
         !isOperator(operator) ||
         isNaN(second_element)
       ) {
+        consoleLogs.push("Step 5: Invalid equation format detected!");
         alert("Invalid equation format!");
         throw new Error("Invalid equation");
       }
+
       equation_result = calculate(first_element, second_element, operator);
+      consoleLogs.push(`Step 6.${i / 2 + 1}: Result of calculation: ${equation_result}`);
     }
   } catch (error) {
+    consoleLogs.push(`Step 7: Error occurred: ${error.message}`);
     showAlert("Invalid equation");
     console.error(error.message);
+    console.log(consoleLogs.join("\n")); 
     return "Error: Invalid equation";
   }
+
+  consoleLogs.push(`Step 8: Calculation complete. Final result: ${equation_result}`);
   displayResult(equation_result);
+
+  console.log(consoleLogs.join("\n"));
   return equation_result;
 }
+
